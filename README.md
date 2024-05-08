@@ -1,3 +1,6 @@
+[![Nuget](https://img.shields.io/nuget/v/Mehedi.Read.NoSql.Infrastructure.Abstractions)](https://www.nuget.org/packages/Mehedi.Read.NoSql.Infrastructure.Abstractions/)
+[![Nuget](https://img.shields.io/nuget/dt/Mehedi.Read.NoSql.Infrastructure.Abstractions)](https://www.nuget.org/packages/Mehedi.Read.NoSql.Infrastructure.Abstractions/)
+
 # Mehedi.Read.Nosql.Infrastructure.Abstractions
 Some useful base classes and interfaces, mainly used with the Read side NoSQL layer inside CleanArchitecture template.
 
