@@ -18,16 +18,29 @@ public abstract class QueryRepository<TQueryModel, Tkey>(IReadDbContext context)
     where TQueryModel : IQueryModel<Tkey>
     where Tkey : IEquatable<Tkey>
 {
-    protected readonly Task<IEnumerable<TQueryModel>> Collection = context.GetCollectionAsync<TQueryModel>();
+    //protected readonly Task<IEnumerable<TQueryModel>> Collection = context.GetCollectionAsync<TQueryModel>();
 
-    /// <summary>
-    /// Gets a query model by its id.
-    /// </summary>
-    /// <param name="id">The id of the query model.</param>
-    /// <returns>The query model.</returns>
+    ///// <summary>
+    ///// Gets a query model by its id.
+    ///// </summary>
+    ///// <param name="id">The id of the query model.</param>
+    ///// <returns>The query model.</returns>
+    //public async Task<TQueryModel?> GetByIdAsync(Tkey id)
+    //{
+    //    return (await context.GetCollectionAsync<TQueryModel>()).Where(x => x.Id.Equals(id)).FirstOrDefault();
+    //}
+    public async Task<IEnumerable<TQueryModel>> GetAllCollectionAsync()
+    {
+        return await context.GetAllCollectionAsync<TQueryModel>();
+    }
+
     public async Task<TQueryModel?> GetByIdAsync(Tkey id)
     {
-        var collections = await Collection;
-        return collections.Where(queryModel => queryModel.Id.Equals(id)).FirstOrDefault();
+        return await context.GetByIdAsync<TQueryModel, Tkey>(id);
+    }
+
+    public async Task<IEnumerable<TQueryModel>> GetCollectionAsync(int start = 0, int pageSize = 100)
+    {
+        return await context.GetCollectionAsync<TQueryModel>(start, pageSize);
     }
 }
